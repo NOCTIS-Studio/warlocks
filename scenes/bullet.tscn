@@ -1,0 +1,84 @@
+[gd_scene load_steps=13 format=3 uid="uid://cp3k3psyceu3t"]
+
+[ext_resource type="Texture2D" uid="uid://bhvoo2pd5i8qv" path="res://assets/Holy VFX 01/Holy VFX 01 Repeatable.png" id="1_gh2wu"]
+[ext_resource type="Script" path="res://scripts/bullet.gd" id="1_gh6be"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bncpq"]
+size = Vector2(25, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ag6h"]
+atlas = ExtResource("1_gh2wu")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rq74c"]
+atlas = ExtResource("1_gh2wu")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dio3h"]
+atlas = ExtResource("1_gh2wu")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_37bjw"]
+atlas = ExtResource("1_gh2wu")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ajdx"]
+atlas = ExtResource("1_gh2wu")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pyscw"]
+atlas = ExtResource("1_gh2wu")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qdjp5"]
+atlas = ExtResource("1_gh2wu")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3apc6"]
+atlas = ExtResource("1_gh2wu")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0adep"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ag6h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rq74c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dio3h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_37bjw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ajdx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pyscw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qdjp5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3apc6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Bullet" type="Area2D"]
+script = ExtResource("1_gh6be")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2.5, 0.5)
+shape = SubResource("RectangleShape2D_bncpq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_0adep")
+autoplay = "default"
+frame = 4
+frame_progress = 0.362335
