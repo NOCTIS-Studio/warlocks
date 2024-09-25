@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://gpp5ahv6p23a"]
+[gd_scene load_steps=42 format=3 uid="uid://gpp5ahv6p23a"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_yjoub"]
 [ext_resource type="Texture2D" uid="uid://sh2vf2hr3d7e" path="res://assets/Tiny RPG Character Asset Pack v1.03 -Free Soldier&Orc/Characters(100x100)/Orc/Orc/Orc.png" id="2_sup7g"]
@@ -154,9 +154,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_54h5i")
 }],
-"loop": true,
+"loop": false,
 "name": &"damage",
-"speed": 8.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -173,7 +173,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"death",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -196,7 +196,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"heavyAttack",
-"speed": 6.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -271,46 +271,60 @@ animations = [{
 }],
 "loop": true,
 "name": &"move",
-"speed": 7.0
+"speed": 8.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qn2nm"]
-radius = 6.0
+radius = 5.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7nup7"]
-radius = 8.0
-height = 18.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_dhicr"]
+radius = 9.05539
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cj6ot"]
-radius = 106.042
+radius = 109.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8tlof"]
+radius = 24.0832
 
 [node name="enemy" type="CharacterBody2D"]
+collision_layer = 2
 script = ExtResource("1_yjoub")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_kcniq")
-animation = &"death"
-frame = 3
-frame_progress = 1.0
+animation = &"heavyAttack"
+frame_progress = 0.918343
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-position = Vector2(1, 2)
+position = Vector2(-1, 2)
 shape = SubResource("CircleShape2D_qn2nm")
+debug_color = Color(0.0180532, 0.593549, 0.733077, 0.42)
 metadata/_edit_group_ = true
 
 [node name="hitbox" type="Area2D" parent="."]
 visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
-position = Vector2(1, -1)
-shape = SubResource("CapsuleShape2D_7nup7")
+shape = SubResource("CircleShape2D_dhicr")
 
 [node name="detectionArea" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detectionArea"]
 shape = SubResource("CircleShape2D_cj6ot")
 
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="attackRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="attackRange"]
+shape = SubResource("CircleShape2D_8tlof")
+
 [connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="body_entered" from="detectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="detectionArea" to="." method="_on_detection_area_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="attackRange" to="." method="_on_attack_range_body_entered"]
+[connection signal="body_exited" from="attackRange" to="." method="_on_attack_range_body_exited"]

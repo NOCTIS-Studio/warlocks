@@ -4,6 +4,7 @@ signal player_fired_bullet(bullet, position, direction)
 
 @export var Bullet: PackedScene
 const SPEED = 100.0
+var health = 200
 var current_dir = "none"
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var end_of_wand: Marker2D = $EndOfWand
@@ -84,5 +85,5 @@ func shoot():
 	bullet_instace.set_direction(direction_to_mouse)
 	
 #Function to detect players as enemies	
-func player():
-	pass
+func take_dmg_player():
+	print("me pego un orco")

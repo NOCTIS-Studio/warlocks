@@ -1767,6 +1767,7 @@ y_sort_enabled = true
 script = ExtResource("1_s58f6")
 
 [node name="Player" parent="." instance=ExtResource("1_yh865")]
+position = Vector2(-50, 0)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(3, 3)
@@ -1786,4 +1787,10 @@ tile_set = SubResource("TileSet_o0b7l")
 
 [node name="enemy" parent="." instance=ExtResource("9_skd76")]
 top_level = true
-position = Vector2(187, 113)
+position = Vector2(117, -16)
+
+[node name="wall" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="wall"]
+position = Vector2(1, 1)
+polygon = PackedVector2Array(336, 176, 335, -145, -289, -145, -289, 175, 336, 176, 374, 193, -294, 201, -318, 189, -320, -165, -92, -181, 339, -171, 371, -160, 374, 193)
