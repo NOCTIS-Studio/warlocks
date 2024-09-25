@@ -1,23 +1,21 @@
 shader_type canvas_item;
 
-uniform sampler2D outside_texture; // The texture for the outside area
-uniform vec2 center; // Center of the shrinking area
-uniform float radius; // Radius for the inside circle to discard
-uniform vec2 screen_size; // The size of the screen or TextureRect
+uniform vec2 center;
+uniform float radius;
+uniform float border_width;
+uniform vec4 outside_color;
 
 void fragment() {
-    // Calculate the distance from the fragment to the center
-    float distance_to_center = length(FRAGCOORD.xy - center);
-    
-    // If inside the circle, discard the pixel
-    if (distance_to_center < radius) {
-        discard;
+    vec2 local_coords = FRAGCOORD.xy;
+    float dist = distance(local_coords, center);
+
+    if (dist > radius + border_width) {
+        COLOR = outside_color;
+    } else if (dist > radius) {
+        // Calculate the border color based on the distance from the radius
+        float border_factor = (dist - radius) / border_width;
+        COLOR = mix(outside_color, vec4(0.0, 0.0, 0.0, 1.0), border_factor);
+    } else {
+        discard; // Discard pixels inside the radius
     }
-    
-    // Sample the texture using normalized coordinates
-    vec2 uv = FRAGCOORD.xy / screen_size;
-    vec4 tex_color = texture(outside_texture, uv);
-    
-    // Set the color to the texture
-    COLOR = tex_color;
 }
