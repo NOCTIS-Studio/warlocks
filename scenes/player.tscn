@@ -313,6 +313,14 @@ position = Vector2(0, 4)
 shape = SubResource("CircleShape2D_6hx8w")
 
 [node name="EndOfWand" type="Marker2D" parent="."]
-position = Vector2(8, 3)
+position = Vector2(27, 3)
 
 [node name="WandDirection" type="Marker2D" parent="."]
+
+[node name="Cooldown1" type="Timer" parent="."]
+
+[node name="Cooldown2" type="Timer" parent="."]
+wait_time = 4.0
+
+[connection signal="timeout" from="Cooldown1" to="." method="_on_cooldown_1_timeout"]
+[connection signal="timeout" from="Cooldown2" to="." method="_on_cooldown_2_timeout"]

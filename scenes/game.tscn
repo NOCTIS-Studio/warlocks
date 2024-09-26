@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://bykv1p16ga4dy"]
+[gd_scene load_steps=17 format=4 uid="uid://bykv1p16ga4dy"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_s58f6"]
 [ext_resource type="PackedScene" uid="uid://dlrkhpxjgy2l3" path="res://scenes/player.tscn" id="1_yh865"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://ws74ko05a0uo" path="res://assets/Texture/TX Props.png" id="4_gckj7"]
 [ext_resource type="Texture2D" uid="uid://dm45xmno4lwqs" path="res://assets/Texture/TX Shadow Plant.png" id="5_01hwd"]
 [ext_resource type="Texture2D" uid="uid://bijv477epayf0" path="res://assets/Texture/TX Tileset Stone Ground.png" id="6_3i5hb"]
-[ext_resource type="PackedScene" uid="uid://viga4ex103sg" path="res://scenes/bullet_manager.tscn" id="8_cncr2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2khrk"]
 texture = ExtResource("2_kdvk2")
@@ -1765,11 +1764,6 @@ sources/1 = SubResource("TileSetAtlasSource_1kb2x")
 y_sort_enabled = true
 script = ExtResource("1_s58f6")
 
-[node name="Player" parent="." instance=ExtResource("1_yh865")]
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(3, 3)
-
 [node name="world" type="Node" parent="."]
 
 [node name="ground" type="TileMapLayer" parent="world"]
@@ -1781,4 +1775,11 @@ y_sort_enabled = true
 tile_map_data = PackedByteArray("AAD0/wQAAAANAAwAAAD0/wUAAAANAA0AAAD1/wMAAAAOAAsAAAD1/wQAAAAOAAwAAAD1/wUAAAAOAA0AAAD1/wYAAAAOAA4AAAD2/wMAAAAPAAsAAAD2/wQAAAAPAAwAAAD2/wUAAAAPAA0AAAD2/wYAAAAPAA4AAAD3/wQAAAAQAAwAAAD3/wUAAAAQAA0AAAAFAPj/AAANAAwAAAAFAPn/AAANAA0AAAAGAPf/AAAOAAsAAAAGAPj/AAAOAAwAAAAGAPn/AAAOAA0AAAAGAPr/AAAOAA4AAAAHAPf/AAAPAAsAAAAHAPj/AAAPAAwAAAAHAPn/AAAPAA0AAAAHAPr/AAAPAA4AAAAIAPj/AAAQAAwAAAAIAPn/AAAQAA0AAAD8//r/AAAVAAwAAAD8//v/AAAVAA0AAAD9//r/AAAWAAwAAAD9//v/AAAWAA0AAAD+//r/AAAXAAwAAAD+//v/AAAXAA0AAAD///r/AAAYAAwAAAD///v/AAAYAA0AAAAKAAEAAQAWAAoAAAAGAAQAAQAWAAoAAADz//v/AQAcAAEAAAAJAPj/AQASAAkAAAA=")
 tile_set = SubResource("TileSet_o0b7l")
 
-[node name="BulletManager" parent="." instance=ExtResource("8_cncr2")]
+[node name="Player" parent="." instance=ExtResource("1_yh865")]
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(3, 3)
+
+[node name="Projectiles" type="Node2D" parent="."]
+
+[connection signal="spell" from="Player" to="." method="_on_player_spell"]
