@@ -7,7 +7,7 @@ uniform vec4 outside_color;
 
 void fragment() {
     vec2 local_coords = FRAGCOORD.xy;
-    float dist = distance(local_coords, center);
+    float dist = distance(slocal_coords, center);
 
     if (dist > radius + border_width) {
         COLOR = outside_color;

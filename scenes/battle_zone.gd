@@ -74,7 +74,7 @@ func _on_damage_timer_timeout():
 			
 func remove_tiles_outside_battlezone():
 	var position = global_position
-	var area_size = (circle_shape.radius * scale.x ) / base_ground.rendering_quadrant_size
+	var area_size = (circle_shape.radius * scale.x ) / (base_ground.rendering_quadrant_size + 2)
 	print("Updated radius: ", circle_shape.radius)  # Print updated radius
 	print("Updated scale: ", scale.x)
 	
