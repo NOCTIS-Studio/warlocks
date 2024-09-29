@@ -14,7 +14,7 @@ func _on_player_entered(body: Node2D) -> void:
 	print("Body entered:", body.name)
 	if body.is_in_group("player"):  # Assuming the player is in a group called "player"
 		print("is player going up")
-		body.z_index = 7  # Set z_index to 7
+		body.z_index = 0  # Set z_index to 7
 		var collision_layer = body.collision_mask
 		print(collision_layer)
 		body.collision_mask = (body.collision_mask & ~((1 << 1) | (1 << 2))) | (1 << 3)
