@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bl0ijcj04id0r"]
+[gd_scene load_steps=7 format=3 uid="uid://bl0ijcj04id0r"]
 
-[ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_6lrgg"]
-[ext_resource type="Texture2D" uid="uid://dh4rgpm6q6pv3" path="res://assets/UI/warlocks.png" id="1_if2yf"]
-[ext_resource type="Texture2D" uid="uid://bsjdaqsib16j2" path="res://assets/UI/Button_52x14.png" id="2_xhyxg"]
+[ext_resource type="Script" path="res://scenes/options menu/main_menu.gd" id="1_vdcel"]
+[ext_resource type="Texture2D" uid="uid://dh4rgpm6q6pv3" path="res://assets/UI/warlocks.png" id="2_bxrfe"]
+[ext_resource type="Texture2D" uid="uid://bsjdaqsib16j2" path="res://assets/UI/Button_52x14.png" id="3_wfbxk"]
+[ext_resource type="PackedScene" uid="uid://d2650jpec2wyp" path="res://scenes/options menu/options_menu.tscn" id="4_1adpg"]
 
 [sub_resource type="SystemFont" id="SystemFont_x2ioh"]
 font_names = PackedStringArray("Nimbus Roman")
@@ -17,7 +18,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_6lrgg")
+script = ExtResource("1_vdcel")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -26,7 +27,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_if2yf")
+texture = ExtResource("2_bxrfe")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -84,7 +85,7 @@ theme_override_constants/outline_size = 8
 theme_override_fonts/font = SubResource("SystemFont_llpib")
 theme_override_font_sizes/font_size = 24
 text = "Start Game"
-icon = ExtResource("2_xhyxg")
+icon = ExtResource("3_wfbxk")
 icon_alignment = 1
 expand_icon = true
 
@@ -96,7 +97,7 @@ theme_override_constants/outline_size = 8
 theme_override_fonts/font = SubResource("SystemFont_llpib")
 theme_override_font_sizes/font_size = 24
 text = "Options"
-icon = ExtResource("2_xhyxg")
+icon = ExtResource("3_wfbxk")
 icon_alignment = 1
 expand_icon = true
 
@@ -108,6 +109,10 @@ theme_override_constants/outline_size = 8
 theme_override_fonts/font = SubResource("SystemFont_llpib")
 theme_override_font_sizes/font_size = 24
 text = "Exit Game"
-icon = ExtResource("2_xhyxg")
+icon = ExtResource("3_wfbxk")
 icon_alignment = 1
 expand_icon = true
+
+[node name="Options_Menu" parent="." instance=ExtResource("4_1adpg")]
+visible = false
+layout_mode = 1
