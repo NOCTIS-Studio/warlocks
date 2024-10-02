@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://gpp5ahv6p23a"]
+[gd_scene load_steps=41 format=3 uid="uid://gpp5ahv6p23a"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_yjoub"]
 [ext_resource type="Texture2D" uid="uid://sh2vf2hr3d7e" path="res://assets/Tiny RPG Character Asset Pack v1.03 -Free Soldier&Orc/Characters(100x100)/Orc/Orc/Orc.png" id="2_sup7g"]
@@ -194,7 +194,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xj7ct")
 }],
-"loop": true,
+"loop": false,
 "name": &"heavyAttack",
 "speed": 8.0
 }, {
@@ -283,17 +283,14 @@ radius = 9.05539
 [sub_resource type="CircleShape2D" id="CircleShape2D_cj6ot"]
 radius = 109.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_8tlof"]
-radius = 24.0832
-
 [node name="enemy" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_yjoub")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_kcniq")
 animation = &"heavyAttack"
-frame_progress = 0.918343
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -319,9 +316,11 @@ autostart = true
 
 [node name="attackRange" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="attackRange"]
-shape = SubResource("CircleShape2D_8tlof")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="attackRange"]
+polygon = PackedVector2Array(0, -15, 0, 13, 13, 17, 26, 2, 25, -11, 11, -22)
+disabled = true
 
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="body_entered" from="detectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="detectionArea" to="." method="_on_detection_area_body_exited"]

@@ -85,5 +85,6 @@ func shoot():
 	bullet_instace.set_direction(direction_to_mouse)
 	
 #Function to detect players as enemies	
-func take_dmg_player():
-	print("me pego un orco")
+func take_dmg_player(dmg: int):
+	health -=dmg
+	print("my life is : " + str(health) )
