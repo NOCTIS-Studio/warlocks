@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://rqmbcf68dyds"]
+
+[ext_resource type="PackedScene" uid="uid://dejek3ivmkt18" path="res://scenes/spells/spell.tscn" id="1_r84un"]
+
+[node name="BasicSpell" instance=ExtResource("1_r84un")]
