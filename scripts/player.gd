@@ -82,3 +82,6 @@ func shoot():
 	var target = get_global_mouse_position()
 	var direction_to_mouse = end_of_wand.global_position.direction_to(target).normalized()
 	bullet_instace.set_direction(direction_to_mouse)
+	
+func take_damage(amount: int):
+	print("received damage" + str(amount))	
