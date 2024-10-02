@@ -5,6 +5,7 @@ signal spell(pos, direction, type)
 
 @export var Bullet: PackedScene
 const SPEED = 100.0
+var health = 200
 var current_dir = "none"
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var end_of_wand: Marker2D = $EndOfWand
@@ -26,13 +27,15 @@ func _physics_process(delta: float) -> void:
 		can_spell1 = false
 		cooldown_1.start()
 		spell.emit(end_of_wand.global_position, player_direction, "fireball")
+		print("spell q casting")
 	elif Input.is_action_pressed("spell_2") and can_spell2:
 		can_spell2 = false
 		cooldown_2.start()
 		spell.emit(end_of_wand.global_position, player_direction, "frostbolt")
+		print("spell e casting")
 	player_movement(delta)
-	
-	
+
+
 
 func player_movement(delta):
 	if Input.is_action_pressed("move_right"):
@@ -99,6 +102,14 @@ func shoot():
 	var target = get_global_mouse_position()
 	var direction_to_mouse = end_of_wand.global_position.direction_to(target).normalized()
 	bullet_instace.set_direction(direction_to_mouse)
+
+#Function to detect players as enemies
+func take_dmg_player(dmg: int):
+	health -=dmg
+	print("my life is : " + str(health) )
+
+func take_damage(amount: int):
+	print("received damage" + str(amount))
 
 
 func _on_cooldown_1_timeout() -> void:
