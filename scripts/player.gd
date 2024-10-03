@@ -27,10 +27,12 @@ func _physics_process(delta: float) -> void:
 		can_spell1 = false
 		cooldown_1.start()
 		spell.emit(end_of_wand.global_position, player_direction, "fireball")
+		print("spell q casting")
 	elif Input.is_action_pressed("spell_2") and can_spell2:
 		can_spell2 = false
 		cooldown_2.start()
 		spell.emit(end_of_wand.global_position, player_direction, "frostbolt")
+		print("spell e casting")
 	player_movement(delta)
 
 
