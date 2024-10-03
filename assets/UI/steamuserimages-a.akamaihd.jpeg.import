@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgxfpffr8rxr1"
-path="res://.godot/imported/ItemInteractIcons_14x12.png-04d4d7ee3bdf45d2fc826c4237c0b2e9.ctex"
+uid="uid://bgq7g16c5uk8y"
+path="res://.godot/imported/steamuserimages-a.akamaihd.jpeg-d973220333775daa84d3eb3789a94c55.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/UI/ItemInteractIcons_14x12.png"
-dest_files=["res://.godot/imported/ItemInteractIcons_14x12.png-04d4d7ee3bdf45d2fc826c4237c0b2e9.ctex"]
+source_file="res://assets/UI/steamuserimages-a.akamaihd.jpeg"
+dest_files=["res://.godot/imported/steamuserimages-a.akamaihd.jpeg-d973220333775daa84d3eb3789a94c55.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgxfpffr8rxr1"
-path="res://.godot/imported/ItemInteractIcons_14x12.png-04d4d7ee3bdf45d2fc826c4237c0b2e9.ctex"
+uid="uid://dh4rgpm6q6pv3"
+path="res://.godot/imported/warlocks.png-9b3deb86af9e47b549a07d4e80f51862.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/UI/ItemInteractIcons_14x12.png"
-dest_files=["res://.godot/imported/ItemInteractIcons_14x12.png-04d4d7ee3bdf45d2fc826c4237c0b2e9.ctex"]
+source_file="res://assets/UI/warlocks.png"
+dest_files=["res://.godot/imported/warlocks.png-9b3deb86af9e47b549a07d4e80f51862.ctex"]
 
 [params]
 
