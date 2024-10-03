@@ -3,8 +3,8 @@ extends Node2D
 
 @onready var projectiles: Node2D = $Projectiles
 @onready var player: CharacterBody2D = $Player
-@onready var bullet_manager: Node2D = $BulletManager
 
+var spell_scene: PackedScene
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -26,4 +26,3 @@ func create_spell(pos, direction, type):
 	spell.rotation_degrees = rad_to_deg(direction.angle())
 	spell.direction = direction
 	projectiles.add_child(spell)
-

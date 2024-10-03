@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 signal player_fired_bullet(bullet, position, direction)
+signal spell(pos, direction, type)
 
 @export var Bullet: PackedScene
 const SPEED = 100.0
