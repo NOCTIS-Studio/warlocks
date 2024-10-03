@@ -8,14 +8,30 @@ var current_dir = "none"
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var end_of_wand: Marker2D = $EndOfWand
 @onready var wand_direction: Marker2D = $WandDirection
+@onready var cooldown_1: Timer = $Cooldown1
+@onready var cooldown_2: Timer = $Cooldown2
+
+var can_spell1: bool = true
+var can_spell2: bool = true
 
 func _ready() -> void:
-	$AnimatedSprite2D.play("front_idle")
+	animated_sprite_2d.play("front_idle")
 
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
+	var player_direction = (get_global_mouse_position() - position).normalized()
+	if Input.is_action_pressed("spell_1") and can_spell1:
+		can_spell1 = false
+		cooldown_1.start()
+		spell.emit(end_of_wand.global_position, player_direction, "fireball")
+	elif Input.is_action_pressed("spell_2") and can_spell2:
+		can_spell2 = false
+		cooldown_2.start()
+		spell.emit(end_of_wand.global_position, player_direction, "frostbolt")
 	player_movement(delta)
+
+
 
 func player_movement(delta):
 	if Input.is_action_pressed("move_right"):
@@ -47,7 +63,7 @@ func player_movement(delta):
 
 func play_animation(movement):
 	var dir = current_dir
-	var animation = $AnimatedSprite2D
+	var animation = animated_sprite_2d
 	if dir == "right":
 		animation.flip_h = false
 		if movement == 1:
@@ -82,6 +98,14 @@ func shoot():
 	var target = get_global_mouse_position()
 	var direction_to_mouse = end_of_wand.global_position.direction_to(target).normalized()
 	bullet_instace.set_direction(direction_to_mouse)
-	
+
 func take_damage(amount: int):
-	print("received damage" + str(amount))	
+	print("received damage" + str(amount))
+
+
+func _on_cooldown_1_timeout() -> void:
+	can_spell1 = true
+
+
+func _on_cooldown_2_timeout() -> void:
+	can_spell2 = true

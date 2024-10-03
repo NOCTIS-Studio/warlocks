@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1d2nmu18a34v"]
+
+[ext_resource type="PackedScene" uid="uid://dejek3ivmkt18" path="res://scenes/spells/spell.tscn" id="1_lox22"]
+
+[node name="LightningBolt" instance=ExtResource("1_lox22")]

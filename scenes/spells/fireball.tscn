@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://b6rt24rrrjj4e"]
+
+[ext_resource type="PackedScene" uid="uid://dejek3ivmkt18" path="res://scenes/spells/spell.tscn" id="1_fpbep"]
+[ext_resource type="Texture2D" uid="uid://nd15q0uxognd" path="res://assets/spells/fireball/FB00_nyknck/FB003.png" id="2_3w0uf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q2upw"]
+
+[node name="Fireball" instance=ExtResource("1_fpbep")]
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(-11, 1)
+texture = ExtResource("2_3w0uf")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CircleShape2D_q2upw")
