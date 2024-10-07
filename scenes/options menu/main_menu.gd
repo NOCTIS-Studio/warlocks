@@ -9,7 +9,7 @@ extends Control
 
 @onready var margin_container: MarginContainer = $MarginContainer
 
-@onready var start_game = preload("res://scenes/game.tscn") as PackedScene
+@onready var start_game = preload("res://scenes/level/game.tscn") as PackedScene
 # Called when the node enters the scene tree for the first time.
 
 func _ready():
